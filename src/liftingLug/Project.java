@@ -19,7 +19,8 @@ public class Project
   public static void main(String[] args)
   {
     // TODO Ispisati program u proceduralnom stilu sa minimalno koda.
-    
+    HECalcProcedural.main(args);
+
   }
 
 }
