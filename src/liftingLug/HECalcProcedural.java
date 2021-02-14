@@ -1,4 +1,4 @@
-/* Glavni kostur pograma
+package liftingLug;/* Glavni kostur pograma
 
 *  Treba da sadrzi primenu funkcija za unos, racunanje i prikaz.
 *  Ovo je main funkcija koja po potrebi poziva ostale.
@@ -54,7 +54,7 @@ public class HECalcProcedural {
     static void func_introduction() {
         System.out.println("");
         System.out.println("*****************************************************************************************");
-        System.out.println("                                  LIFTING LUC ADEQUACY CALCULATOR");
+        System.out.println("                                  LIFTING LUG ADEQUACY CALCULATOR");
         System.out.println("*****************************************************************************************");
         System.out.println("");
     }
@@ -187,7 +187,7 @@ public class HECalcProcedural {
         System.out.println("");
         System.out.println("          Stress                                   Actual\t\tAllowable\t  Utility [%]");
         System.out.println("-----------------------------------------------------------------------------------------");
-        System.out.printf("Shear stress above hole [MPa]:                      %-5.2f\t\t  %-5.2f\t\t\t  %-5.2f \n", shs, sas, shs/sas*100);
+        System.out.printf("Shear stress above hole [MPa]:                      %-5.2f\t\t  %-5.2f\t\t  %-5.2f \n", shs, sas, shs/sas*100);
         System.out.printf("Pin hole bearing stress [MPa]:                      %-5.2f\t\t  %-5.2f\t\t  %-5.2f \n", pbs, pba, pbs/pba*100);
         System.out.printf("Total combined stress at the lug base [MPa]:        %-5.2f\t\t  %-5.2f\t\t  %-5.2f \n", fcom, lall, fcom/lall*100);
         System.out.println("*****************************************************************************************");
