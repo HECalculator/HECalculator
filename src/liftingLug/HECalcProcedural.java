@@ -143,8 +143,12 @@ public class HECalcProcedural {
         System.out.println("Impact factor:                                           " + impfac);
         System.out.println("*****************************************************************************************");
     }
-
+    
     static void func_calculate() {
+        System.out.println("Applying the Impact factor to the loads:");
+        System.out.printf("  Fax = %.2f * Impfac = %.2f N\n", fax, fax * impfac);
+        System.out.printf("  Ft  = %.2f * Impfac = %.2f N\n", ft, ft * impfac);
+        System.out.printf("  Fn  = %.2f * Impfac = %.2f N\n\n", fn, fn * impfac);
         fax = fax * impfac;
         ft = ft * impfac;
         fn = fn * impfac;
@@ -161,40 +165,77 @@ public class HECalcProcedural {
     static void func_calculateShearStress() {
         // Shear stress in lug above hole
         shs = Math.sqrt(Math.pow(fax, 2) + Math.pow(fn, 2) + Math.pow(ft, 2)) / (2 * (r - dh / 2)*t);
+        
+        System.out.println("Shear Stress in Lug above Hole [Shs]:");
+        System.out.println("  = Sqrt( Fax^2 + Fn^2 + Ft^2 ) / (2*(r-dh/2))*t");
+        System.out.printf("  = Sqrt( %.0f^2 + %.0f^2 + %.0f^2 ) / %.3f\n", fax, fn, ft, 2 * (r - dh / 2)*t);
+        System.out.printf("  = %.2f MPa\n\n", shs);
     }
 
     static void func_calculateAllowableShearStress() {
         // Allowable shear stress in lug above hole
         sas = 0.4 * YIELD;
+        
+        System.out.println("Allowable Shear Stress in Lug above Hole [Sas]:");
+        System.out.println("  = 0.4 * Yield");
+        System.out.printf("  = 0.4 * %.0f\n", YIELD);
+        System.out.printf("  = %.2f MPa\n\n", sas);
     }
 
     static void func_calculatePinHoleStress() {
         // Pin hole bearing stress
         pbs = Math.sqrt(Math.pow(fax, 2) + Math.pow(fn, 2)) / (t * dh);
+        
+        System.out.println("Pin Hole Bearing Stress [Pbs]:");
+        System.out.println("  = Sqrt( Fax^2 + Fn^2 ) / ( t * dh )");
+        System.out.printf("  = Sqrt( %.0f^2 + %.0f^2 ) / ( %.3f * %.3f )\n",  fax, fn, t, dh);
+        System.out.printf("  = %.2f MPa\n\n", pbs);
     }
 
     static void func_calculateAllowablePinHoleStress() {
         // Allowable bearing stress
         pba = 0.75 * YIELD;
+        
+        System.out.println("Allowable Bearing Stress [Pba]:");
+        System.out.println("  = 0.75 * Yield");
+        System.out.printf("  = 0.75 * %.0f\n", YIELD);
+        System.out.printf("  = %.2f MPa\n\n", pba);
     }
 
     static void func_calculateBendingStress() {
         // Bending stress at the base of the lug
         fbs = ft * off / (w * Math.pow(t, 2) / 6) + fax * off / (Math.pow(w, 2) * t / 6);
+        
+        System.out.println("Bending stress at the base of the lug [Fbs]:");
+        System.out.println("  = Ft*off / (w*t^2 / 6) + Fax*off / (w^2*t / 6)");
+        System.out.printf("  = %.0f * %.3f / (%.3f * %.3f^2 / 6) +\n",  ft, off, w, t);
+        System.out.printf("    %.0f * %.3f / (%.3f^2 * %.3f / 6)\n",  fax, off, w, t);
+        System.out.printf("  = %.2f MPa\n\n", fbs);         
     }
 
     static void func_calculateTensileStress() {
         // Tensile stress at the base of the lug
         fa = fn / (w * t);
+        
+        System.out.println("Tensile stress at the base of the lug [Fa]:");
+        System.out.printf("  = Fn / (w * t) = %.0f / (%.3f * %.3f )\n",  fn, w, t);
+        System.out.printf("  = %.2f MPa\n\n", fa);  
     }
 
     static void func_calculateTotalCombinedStress() {
         fcom = fbs + fa;
+        
+        System.out.println("Total Combined Stress at the base of the lug:");
+        System.out.printf("  = Fbs + Fa = %.2f MPa\n\n", fcom);  
     }
 
     static void func_calculateLugAllowableStress() {
         // Allowable lug stress for bending and tension
         lall = 0.66 * YIELD;
+        
+        System.out.println("Lug Allowable Stress for Bending and Tension:");
+        System.out.println("  = 0.66 * Yield");
+        System.out.printf("  = 0.66 * %.0f = %.2f MPa\n", YIELD, lall);
     }
 
     static void func_report() {
