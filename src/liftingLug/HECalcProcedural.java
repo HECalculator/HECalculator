@@ -22,7 +22,6 @@ package liftingLug;/* Glavni kostur pograma
 public class HECalcProcedural {
     static double W;
     static String lugMat;
-    static String vessMat;
     static double YIELD;
     static double w;
     static double t;
@@ -45,7 +44,7 @@ public class HECalcProcedural {
 
     static public void main(String[] args) {
         func_introduction();
-        func_inputEcho();
+        func_dummyInput(); // func_inputEcho();
         func_showInputs();
         func_calculate();
         func_report();
@@ -58,6 +57,28 @@ public class HECalcProcedural {
         System.out.println("*****************************************************************************************");
         System.out.println("");
     }
+    
+    /**
+     * Test function.
+     * Placed here for test purposes. Remove in later builds.
+     * 
+     * @author Me
+     */
+    static void func_dummyInput() {
+      W = 6500.0;
+      lugMat = "SA/EN 10028-2";
+      YIELD = 244.0;
+      w = 120.0;
+      t = 15.0;
+      dh = 40.0;
+      r = 40.0;
+      h = 60.;        
+      off = 80.0;
+      fax = 165.0;
+      fn = 0.0;
+      ft = 3250.0;
+      impfac = 2.0;
+  }
 
     static void func_inputEcho() {
         System.out.println("Let's do inputs!\n");
@@ -67,9 +88,6 @@ public class HECalcProcedural {
         System.out.println("Input lifting lug material. (This is for information only!)");
         System.out.print("\tLifting lug material:");
         lugMat = TextIO.getlnString();
-        System.out.println("Input vessel material. (This is for information only!)");
-        System.out.print("\tVessel material:");
-        vessMat = TextIO.getlnString();
         System.out.println("Input yield value for lifting lug material YIELD[MPa].");
         System.out.print("\tYIELD[MPa]:");
         YIELD = TextIO.getlnDouble();
@@ -85,10 +103,10 @@ public class HECalcProcedural {
         System.out.println("Input radius of semi-circular arc of lifting lug r[mm]. Less than w/2");
         System.out.print("\tr[mm]:");
         r = TextIO.getlnDouble();
-        System.out.println("Input height of lifting lug from bottom to center of hole h[mm].");
+        System.out.println("Input offset from vessel OD to center of hole h[mm].");
         System.out.print("\th[mm]:");
-        h = TextIO.getlnDouble();
-        System.out.println("Input offset from vessel OD to center of hole off[mm].");
+        h = TextIO.getlnDouble();        
+        System.out.println("Input height of lifting lug from bottom to center of hole off[mm].");
         System.out.print("\toff[mm]:");
         off = TextIO.getlnDouble();
         System.out.println("Input force along vessel axis fax[N].");
@@ -112,7 +130,6 @@ public class HECalcProcedural {
         System.out.println("");
         System.out.println("Vessel weight W:                                         " + W + "[N]");
         System.out.println("Lifting lug material:                                    " + lugMat);
-        System.out.println("Vessel material:                                         " + vessMat);
         System.out.println("YIELD:                                                   " + YIELD + "[MPa]");
         System.out.println("Lifting lug maximum width w:                             " + w + "[mm]");
         System.out.println("Lifting lug uniform thickness t:                         " + t + "[mm]");
